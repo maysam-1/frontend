@@ -36,3 +36,272 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+/* style fo sidebar */
+/* Sidebar container */
+/* .sidebar {
+  top:0;
+  width: 150px;
+  height: 100vh;
+  background-color: #1a1a2e;
+  color: white;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease-in-out;
+
+} */
+
+/* Sidebar (Fixed on the left) */
+.sidebar {
+  width: 150px;
+  height: 100vh;
+  background-color: #1a1a2e;
+  color: white;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  position: fixed; /* Keeps sidebar in place */
+  left: 0;
+  top: 0;
+  z-index: 5;
+  box-shadow: 4px 4px 8px rgba(11, 100, 234, 0.2); /* Right and bottom shadow */
+
+}
+/* Sidebar Title */
+.sidebar-title {
+  top: 0;
+  align-self: self-start;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-left: 10px;
+}
+
+/* Sidebar Menu Items */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 550;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  margin: 10px;
+  background-color: white;
+}
+.delete-btn{
+  display: flex;
+  align-items: center;
+  font-weight: 550;
+  padding: 10px;
+  border-radius: 8px;
+  height: 3px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  margin: 10px;
+  background-color: white;
+}
+.delete-btn:hover {
+  background-color: #22234a;
+}
+
+.delete-btn.active {
+  background-color: #3d3f72;
+}
+.sidebar-item:hover {
+  background-color: #22234a;
+}
+
+.sidebar-item.active {
+  background-color: #3d3f72;
+}
+
+/* Sidebar Collapse */
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar.collapsed .sidebar-text {
+  display: none;
+}
+
+.topbar {
+  position: fixed; /* Change to fixed */
+  left: 150px; /* Start right after the Sidebar */
+  top: 0;
+  width: calc(100% - 150px); /* Take the remaining space */
+  height: 60px; /* Adjust height as needed */
+  background-color: #1a1a2e;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+  justify-content: space-evenly; /* Even spacing for buttons */
+  z-index: 10; /* Ensure the top bar is above the content */
+
+}
+
+
+
+.topbar-buttons {
+  display: flex;
+  justify-content: space-between; /* Spaces buttons evenly without resizing */
+  width: 100%;
+  margin-right: 30px;
+}
+
+.topbar-button {
+  width: auto; /* Keeps button size fixed */
+}
+
+.item-list{
+  list-style-type:none;
+  display: flex;
+  position:relative;
+  flex-wrap:wrap;
+  color:black;
+  align-items:center;
+  top:70px;
+  left:180px;
+  padding: 16px;
+  z-index: 1;
+  max-width: 75%;
+}
+.item{
+  background-image: url(icons/bg2.png);
+  background-size:contain; /* Ensures the image covers the entire card */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  width: 350px;
+  height: 250px;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  box-shadow: 0px 4px 8px rgba(81, 133, 211, 0.2); /* Right and bottom shadow */
+  flex-wrap: wrap;
+  
+}
+.task-img{
+  display: flex;
+  position: absolute;
+  left:210px;
+  top:70px;
+  width: 120px; /* Adjust width as needed */
+  height: 120px; /* Adjust height as needed */
+  border: solid black;
+  
+}
+.item-header{
+  display: flex; /* Aligns image and text horizontally */
+  align-items: center; /* Vertically aligns image and text */
+  gap: 20px;
+}
+
+body{
+  background-color:  #e6e6fa;
+}
+
+.add-container {
+  width: 400px;
+  height: 480px;
+  justify-content: center; /* Center the form in the container */
+  position: relative;
+  top: 110px;
+  left: 800px;
+  display: flex;
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 8px; /* Add rounded corners */
+  box-shadow: 6px 6px 10px rgba(32, 108, 223, 0.2); /* Add a subtle shadow */
+  background-color: #e5ecf3; /* Add a light background */
+}
+
+.add-task {
+  display: flex;
+  flex-direction: column;
+  padding: 20px; /* Add padding to the form */
+  width: 90%; /* Adjust form width */
+}
+
+.add-task label {
+  margin-bottom: 5px; 
+  font-weight: 550;
+}
+
+.add-task input {
+  padding: 8px;
+  margin-bottom: 10px; 
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.add-task button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 550;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  justify-content: center;
+  transition: background 0.2s ease-in-out;
+  margin: 10px;
+  background-color: white; 
+  border: none; 
+}
+
+.add-task button:hover {
+  background-color: #3d3f72; 
+}
+
+.add-task p {
+    color: rgb(16, 16, 150);
+}
+
+
+
+
+input[type="file"] {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 550;
+  background-color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom:30px ;
+}
+
+.add-task label.checkbox-label { /* Add a class to the label */
+  display: flex;
+  align-items: center; /* Align checkbox and label text vertically */
+  gap: 8px; /* Add some space between checkbox and label */
+  align-self: center;
+}
+
+.add-task input[type="checkbox"] {
+  margin: 0; /* Remove default margins from checkbox */
+}
+.kk{
+  width: calc(100% - 182px);
+  position: fixed;
+  height: 100%;
+  background-color: #e6e6fa;
+  z-index: 20;
+  left:182px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+
+}
+.titlek{
+  font-family: fantasy;
+  font-size: 40px;
+  border-radius: 8px;
+  background-color: #c62127;
+  width: 400px;
+  color: white;
+}
