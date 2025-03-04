@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import magic from "../icons/magic.gif"
 import TakePic from "./takePic";
 import { useParams } from "react-router-dom";
-
+import PriorityDropdown from "./prioritiesDDList";
 
 
 const validateImage = (value) => {
@@ -21,9 +21,10 @@ const validateImage = (value) => {
     }
     return true;
   };
+
 const validationSchema=Yup.object({
-    title:Yup.string().min(1,"title must be at least one letter").required("this field is mandatory"),
-    dueDate:Yup.string().max(20,"max characters is 20").required("this field is mandatory"),
+    title:Yup.string().max(15,"title must be max 15").required("this field is mandatory"),
+    dueDate:Yup.string().max(15,"max characters is 15").required("this field is mandatory"),
     image: Yup.mixed().test('fileType', 'Invalid File', validateImage).optional(),
     isPublic: Yup.boolean(),
 })
@@ -33,13 +34,14 @@ const createTask = async(taskData)=>{
     return res.data
 
 }
+
 async function fetchTask(taskid) {
 
     const res = await axios.get(`http://localhost:8000/tasks/${taskid}`);
     return res.data; 
   }
 
-  
+ 
 const TaskForm=()=>{
     // const {id}=useParams();
     // const isEditMode=Boolean(id);
@@ -56,6 +58,7 @@ const TaskForm=()=>{
             dueDate:"",
             image:"",
             isPublic:true,
+            priority_id:""
         },
         validationSchema: validationSchema, 
         onSubmit: (values) => {
@@ -78,12 +81,15 @@ const TaskForm=()=>{
                   };
                   mutation.mutate(dataToSend);
               }
+              window.location.reload();
             } else {
               const dataToSend = {
                 ...values,
                 isPublic: values.isPublic ? 1 : 0,
               };
               mutation.mutate(dataToSend);
+              window.location.reload();
+
             }}
     });
     const handleImageCapture = (dataURL) => {
@@ -124,6 +130,8 @@ const TaskForm=()=>{
             {formik.touched.isPublic&&formik.errors.isPublic&&<p>{formik.errors.isPublic.message}</p>}
 
             <TakePic onCapture={handleImageCapture} /> 
+            <PriorityDropdown value={formik.values.priority_id} onChange={formik.handleChange} />
+        {formik.touched.priority_id && formik.errors.priority_id && <p>{formik.errors.priority_id}</p>}
 
             <button type="submit">Create Task<img src={magic} alt="Icon" style={{ height: "2rem", width: "2rem" }}/></button>
         </form></div>
