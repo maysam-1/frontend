@@ -5,7 +5,7 @@ import pileGif from "../icons/taskspile.gif";
 import mineGif from "../icons/mine.gif";
 import addGif from "../icons/add2.gif";
 import castleGif from "../icons/castle.gif"
-
+import handleSignOut from "./signOut";
 function Sidebar() {
   const [active, setActive] = useState("Home");
   const [collapsed, setCollapsed] = useState(false);
@@ -39,6 +39,8 @@ function Sidebar() {
             {!collapsed && <span className="sidebar-text">{item.name}</span>}
           </button>
         ))}
+        <handleSignOut></handleSignOut>
+
         <label style={{position:"fixed",bottom:"5px",left:"5px"}}>Made By MAYSAM
         </label>
       </nav>
