@@ -5,7 +5,7 @@ import pileGif from "../icons/taskspile.gif";
 import mineGif from "../icons/mine.gif";
 import addGif from "../icons/add2.gif";
 import castleGif from "../icons/castle.gif"
-import handleSignOut from "./signOut";
+import HandleSignOut from "./signOut";
 function Sidebar() {
   const [active, setActive] = useState("Home");
   const [collapsed, setCollapsed] = useState(false);
@@ -14,7 +14,7 @@ function Sidebar() {
   const menuItems = [
     { name: "Home", icon: <img src={homeGif} alt="Icon" style={{ height: "2rem", width: "2rem" }} />, path: "/" }, 
     { name: "All Tasks", icon: <img src={pileGif} alt="Icon" style={{ height: "2rem", width: "2rem" }} />, path: "/all-tasks" }, 
-    { name: "My Tasks", icon: <img src={mineGif} alt="Icon" style={{ height: "2rem", width: "2rem" }} />, path: "/" }, 
+    { name: "My Tasks", icon: <img src={mineGif} alt="Icon" style={{ height: "2rem", width: "2rem" }} />, path: "/mytasks" }, 
     { name: "Add Task", icon: <img src={addGif} alt="Icon" style={{ height: "2rem", width: "2rem" }} />, path: "/add-task" }, 
     { name: "THE OGs", icon: <img src={castleGif} alt="Icon" style={{ height: "2rem", width: "2rem" }} />, path: "/KK" }, 
 
@@ -39,8 +39,7 @@ function Sidebar() {
             {!collapsed && <span className="sidebar-text">{item.name}</span>}
           </button>
         ))}
-        <handleSignOut></handleSignOut>
-
+        <HandleSignOut></HandleSignOut>
         <label style={{position:"fixed",bottom:"5px",left:"5px"}}>Made By MAYSAM
         </label>
       </nav>
