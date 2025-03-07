@@ -20,6 +20,7 @@ function TakePic({ onCapture }) {
       }
     } catch (error) {
       console.error('Error accessing camera:', error);
+      alert('Error accessing camera. Please check your device settings.');
     }
   };
 
@@ -35,6 +36,7 @@ function TakePic({ onCapture }) {
       setCapturedImage(dataURL)
       if (videoRef.current.srcObject) {
         videoRef.current.srcObject.getTracks().forEach((track) => track.stop());
+        setIsCameraActive(false);
       }
     }
   };
