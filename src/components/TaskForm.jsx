@@ -35,11 +35,11 @@ const createTask = async(taskData)=>{
 
 }
 
-async function fetchTask(taskid) {
+// async function fetchTask(taskid) {
 
-    const res = await axios.get(`http://localhost:8000/tasks/${taskid}`);
-    return res.data; 
-  }
+//     const res = await axios.get(`http://localhost:8000/tasks/${taskid}`);
+//     return res.data; 
+//   }
 
  
   const TaskForm = () => {
