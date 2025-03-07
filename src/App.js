@@ -1,33 +1,86 @@
-import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter,Routes,Route, Router} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AllTasks from './components/TaskList';
-import Task from './components/TaskItem';
 import TaskForm from './components/TaskForm';
 import Sidebar from './components/sideBar';
 import TopBar from './components/topBar';
 import KK from './pages/KK';
+import Signup from './components/signUp';
+import SignIn from './components/signin';
+import PrivateRoute from './components/privateRoute';
+import Home from './components/home';
+import MyTasks from './components/myTasks';
+import React from "react";
+import ViewUsersPage from './components/ViewUsersPage';
+import UserDetails from './pages/userDetails';
 
 
 function App() {
+ 
+
   return (
     <div className="App">
-     <BrowserRouter>
-     <TopBar/>
-     <Sidebar/>
-     <Routes>
-      <Route path='task' element={<Task/>}></Route>
-      {/* <Route path='add' element={<TaskForm/>}></Route> */}
-      {/* <Route path="/" element={<Home />} /> */}
-      <Route path="/all-tasks" element={<AllTasks />} />
-      <Route path="/add-task" element={<TaskForm />} />
-      <Route path="/KK" element={<KK/>} />
+      <BrowserRouter>
+        <TopBar/>
+        <Sidebar />
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path='/home' element={<Home />} />
 
-     </Routes>
-     </BrowserRouter>
+          {/* Protected Routes (Require Authentication) */}
+          <Route 
+          path="/users/:userId"
+           element={<PrivateRoute>
+            <UserDetails />
+            </PrivateRoute>} /> 
+            
+          <Route
+            path="/mytasks"
+            element={
+              <PrivateRoute>
+                <MyTasks />
+              </PrivateRoute>
+            }
+          />
+         
+          <Route
+            path="/all-tasks"
+            element={
+              <PrivateRoute>
+                <AllTasks />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/add-task"
+            element={
+              <PrivateRoute>
+                <TaskForm />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/view-users"
+            element={
+              <PrivateRoute>
+                <ViewUsersPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/KK"
+            element={
+              <PrivateRoute>
+                <KK />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
-
 
 export default App;
