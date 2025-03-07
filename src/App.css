@@ -314,13 +314,13 @@ input[type="file"] {
 /* Container for the form */
 .signup-container {
   max-width: 400px;
-  margin: 40px auto;
+  margin-top:80px ;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  margin-top: 80px;
+  background-color: #e5ecf3; 
+  margin-left: 500px;
 }
 
 /* Title for the form */
@@ -389,12 +389,14 @@ input[type="file"] {
 }
 .signin-container {
   max-width: 400px;
-  margin: 50px auto;
+  margin-top: 80px;
   padding: 20px;
-  border: 1px solid black;
+  border: 1px solid #ccc ;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin-top: 80px;
+  background-color: #e5ecf3; 
+  margin-left: 500px;
 }
 
 .signin-form {
