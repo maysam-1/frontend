@@ -2,10 +2,14 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 async function fetchTasks() {
+  try {
     const res = await axios.get("http://localhost:8000/tasks/alltasks");
-    return res.data; 
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+    throw new Error("Failed to fetch tasks. Please try again later."); 
   }
-
+}
 
 
 
@@ -19,7 +23,13 @@ function AllTasks(){
  
 
    
-   error&&console.log(error.message)
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
    return(
     <ul className="item-list">
    {
