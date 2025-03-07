@@ -1,22 +1,21 @@
 
 import {useFormik} from "formik"
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation} from "@tanstack/react-query";
 import axios from "axios";
 import * as Yup from "yup";
 import magic from "../icons/magic.gif"
 import TakePic from "./takePic";
-import { useParams } from "react-router-dom";
 import PriorityDropdown from "./prioritiesDDList";
 
 
 const validateImage = (value) => {
     if (!value) {
-      return true; // Optional, allow no file
+      return true; 
     }
     if (value.type !== 'image/jpeg' && value.type !== 'image/png') {
       return new Yup.ValidationError('Only JPEG and PNG files are allowed');
     }
-    if (value.size > 1024 * 1024) { // 1MB limit
+    if (value.size > 1024 * 1024) { 
       return new Yup.ValidationError('File size must be less than 1MB');
     }
     return true;
@@ -35,18 +34,13 @@ const createTask = async(taskData)=>{
 
 }
 
-// async function fetchTask(taskid) {
-
-//     const res = await axios.get(`http://localhost:8000/tasks/${taskid}`);
-//     return res.data; 
-//   }
 
  
   const TaskForm = () => {
-    // Mutation to create the task
+   
     const mutation = useMutation({ mutationFn: createTask });
   
-    // Formik setup
+    
     const formik = useFormik({
       initialValues: {
         title: "",
@@ -54,23 +48,22 @@ const createTask = async(taskData)=>{
         image: "",
         isPublic: true,
         priority_id: "",
-        user_id: "", // user_id will be added dynamically
+        user_id: "", 
       },
       validationSchema: validationSchema,
       onSubmit: (values) => {
-        // Get the user_id from localStorage
         const user = JSON.parse(localStorage.getItem("user"));
-        const user_id = user ? user.id : null; // Safely retrieve the user ID
+        const user_id = user ? user.id : null; 
         console.log("user id",user_id)
         if (user_id) {
-          // Include user_id in the task data
+          
           const taskData = {
             ...values,
             user_id: user_id,
             isPublic: values.isPublic ? 1 : 0,
           };
   
-          // Handle image if present
+         
           if (values.image) {
             if (values.image instanceof File) {
               const reader = new FileReader();
@@ -90,10 +83,9 @@ const createTask = async(taskData)=>{
               mutation.mutate(dataToSend);
             }
           } else {
-            mutation.mutate(taskData); // No image, just send the task data
+            mutation.mutate(taskData); 
           }
   
-          // Optionally reload page or redirect
           window.location.reload();
         } else {
           console.error("User is not authenticated.");
