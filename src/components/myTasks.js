@@ -1,11 +1,15 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
-const user = JSON.parse(localStorage.getItem("user"));
-const userId = user ? user.id : null; 
-console.log("user id from my tasks", userId);
 
 async function fetchTasks() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const userId = user ? user.id : null; 
+
+    if (!userId) {
+      console.error("User ID is null. Cannot fetch tasks.");
+      return []; // Return an empty array to avoid crashing the UI
+    }
     try {
         const res = await axios.get(`http://localhost:8000/tasks/mytasks/${userId}`);
         return res.data;
