@@ -23,10 +23,14 @@ function Sidebar() {
   ];
 
   const handleNavigation = (path, name) => {
-    navigate(path);
-    setActive(name); // Optional: Update active state
+    try {
+      navigate(path);
+      setActive(name);
+    } catch (error) {
+      console.error("Error navigating:", error.message);
+    }
   };
-
+  
   return (
     <div className={`sidebar ${collapsed ? "collapsed" : ""}`}>
       <h2 className="sidebar-title">ALOR</h2>
