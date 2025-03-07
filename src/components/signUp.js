@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = () => { 
   const navigate = useNavigate();
 
-  // Redirect if already signed in
   useEffect(() => {
     if (localStorage.getItem("user")) {
       navigate("/home");
@@ -34,23 +33,30 @@ const Signup = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Signup failed. Please try again.");
-      }
+        if (response.status === 400) {
+          throw new Error("Bad Request: Please check your input.");
+        } else if (response.status === 409) {
+          throw new Error("Username or email already exists.");
+        } else {
+          throw new Error("Signup failed. Please try again.");
+        }
+            }
 
       const data = await response.json();
       
-      // Store user data in localStorage
       localStorage.setItem("user", JSON.stringify(data));
 
       // Redirect to home page
       navigate("/home");
     } catch (err) {
       setError(err.message);
+      console.error("Signup error:", err); 
+
     }
   };
 
   return (
-    <div className="signup-container" style={{marginTop:"90px"}}>
+    <div className="signup-container" style={{marginTop:"120px"}}>
       <h2>Signup</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit} className="signup-form">
