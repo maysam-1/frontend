@@ -35,23 +35,28 @@ const SignIn = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Invalid credentials, please try again.');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Invalid credentials, please try again.');
       }
 
       const data = await response.json();
-      
-      // Store user data in localStorage
+      console.log("Response from API:", data);  
+
       localStorage.setItem("user", JSON.stringify(data));
 
-      // Redirect to home page
       navigate("/home");
     } catch (err) {
-      setError(err.message);
-    }
+
+      if (err.message === 'Failed to fetch') {
+            setError('Network error. Please check your internet connection.');
+          } else {
+            setError(err.message); 
+          }    }
+          
   };
 
   return (
-    <div className="signin-container" style={{marginTop:"90px"}}>
+    <div className="signin-container" style={{marginTop:"120px"}}>
       <h2>Sign In</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit} className="signin-form">
