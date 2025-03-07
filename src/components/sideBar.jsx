@@ -17,6 +17,8 @@ function Sidebar() {
     { name: "My Tasks", icon: <img src={mineGif} alt="Icon" style={{ height: "2rem", width: "2rem" }} />, path: "/mytasks" }, 
     { name: "Add Task", icon: <img src={addGif} alt="Icon" style={{ height: "2rem", width: "2rem" }} />, path: "/add-task" }, 
     { name: "THE OGs", icon: <img src={castleGif} alt="Icon" style={{ height: "2rem", width: "2rem" }} />, path: "/KK" }, 
+    { name: "View Users", icon: <img src={homeGif} alt="Icon" style={{ height: "2rem", width: "2rem" }} />, path: "/view-users" } // New button
+
 
   ];
 
