@@ -36,7 +36,7 @@ function TakePic({ onCapture }) {
       setCapturedImage(dataURL)
       if (videoRef.current.srcObject) {
         videoRef.current.srcObject.getTracks().forEach((track) => track.stop());
-        setIsCameraActive(false);
+        // setIsCameraActive(false);
       }
     }
   };
