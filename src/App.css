@@ -436,3 +436,86 @@ input[type="file"] {
   font-size: 14px;
   text-align: center;
 }
+/* Style for the Sign Out link */
+.sign-out-link {
+  text-decoration: none;  /* Removes the underline */
+  font-size: 1.2rem;      /* Increase font size */
+  color: white;           /* Change text color to white */
+  font-weight: bold;      /* Optional: make the font bold */
+  transition: color 0.3s; /* Smooth color transition when hovered */
+}
+.sign-in-link{
+  text-decoration: none;  /* Removes the underline */
+  font-size: 1.2rem;      /* Increase font size */
+  color: white;           /* Change text color to white */
+  font-weight: bold;      /* Optional: make the font bold */
+  transition: color 0.3s;
+}
+
+/* Optional: Hover effect for the link */
+.sign-out-link:hover {
+  color: #ddd; /* Slight change on hover, you can modify this */
+}
+.sign-out-none{
+  display: none;
+}
+.sign-in-none{
+  display: none;
+}
+.apt-link{
+  text-decoration: none; 
+  font-size: 0.4 rem;     
+  color: white;           
+  transition: color 0.3s; 
+  text-align: center;
+}
+.apt-link:hover{
+  color: #ddd; 
+}
+
+.edit-link {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 550;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  margin: 3px;
+  background-color: white;
+  height: 6px;
+  width: 25px;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}
+.edit-link:hover{
+  background-color: #1a1a2e;
+  color: white;
+
+}
+
+.general-btns{
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-weight: 550;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  margin: 10px;
+  background-color: white;
+  height: 20px;
+  width: 100px;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+
+}
+.general-btns:hover{
+  background-color: #1a1a2e;
+  color: white;
+
+}
