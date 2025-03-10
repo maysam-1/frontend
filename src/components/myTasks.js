@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
+import magic from "../icons/magic.gif"
 
 
 async function fetchTasks() {
@@ -66,6 +68,9 @@ function MyTasks() {
                             </div>
                             <h4 style={{ marginLeft: "1px", marginBottom: "1px" }}>Due date: {task.dueDate}</h4>
                             <button className="delete-btn" onClick={() => deleteTask(task.id)}>Move to Recycle Bin</button>
+                                          <h5>
+                         <Link to={`/tasks/edit/${task.id}`} className="edit-link">Edit</Link>
+                            </h5>
                             <div style={{ display: "flex", flexDirection: "row" }}>
                                 <h6 style={{ color: "#3d3f72", marginLeft: "1px", marginRight: "4px" }}>
                                     {task.isPublic == 1 ? "Public" : "Private"}
@@ -78,7 +83,12 @@ function MyTasks() {
                     </li>
                 ))
             ) : (
-                <h2>No tasks available</h2>
+                <div style={{display:"flex",flexDirection:"column",alignItems:"center",position:"fixed",top:"250px",left:"500px"}}><h2>You Have No Tasks Yet Click To Add A Task</h2>
+                <Link className="general-btns" to="/add-task">Add Task
+                <img src={magic} alt="Icon" style={{ height: "2rem", width: "2rem" }} />
+                </Link>
+                </div>
+                
             )}
         </ul>
     );
