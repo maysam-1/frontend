@@ -4,16 +4,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #e6e6fa;
     font-family: 'Arial', sans-serif;
     flex-direction: column;
     margin-left: 150px;
   }
-  
+
+ 
   .centered-text {
     font-size: 3rem;
     font-weight: bold;
-    color: #333;
+    color: black;
     opacity: 0;
     transform: scale(0);
     animation: typingEffect 2s forwards, fadeIn 1s forwards;
