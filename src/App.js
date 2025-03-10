@@ -13,7 +13,7 @@ import MyTasks from './components/myTasks';
 import React from "react";
 import ViewUsersPage from './components/ViewUsersPage';
 import UserDetails from './pages/userDetails';
-
+import EditTaskForm from './components/editTask';
 
 function App() {
  
@@ -35,7 +35,13 @@ function App() {
            element={<PrivateRoute>
             <UserDetails />
             </PrivateRoute>} /> 
-            
+
+            <Route 
+          path="/tasks/edit/:taskId"
+           element={<PrivateRoute>
+            <EditTaskForm />
+            </PrivateRoute>} /> 
+
           <Route
             path="/mytasks"
             element={
