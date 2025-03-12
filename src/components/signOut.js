@@ -9,7 +9,7 @@ const HandleSignOut = () => {
   const handleSignOut = () => {
     try {
       localStorage.removeItem("user");
-      
+      window.dispatchEvent(new Event("userChange")); // Notify TopBar
       queryClient.invalidateQueries(["mytasks"]);
       window.location.reload();
 
