@@ -22,10 +22,15 @@ const validateImage = (value) => {
   };
 
 const validationSchema=Yup.object({
-    title:Yup.string().max(15,"title must be max 15").required("this field is mandatory"),
-    dueDate:Yup.string().max(15,"max characters is 15").required("this field is mandatory"),
+    title:Yup.string().min(2, "Title must be at least 2 characters long").max(15,"title must be max 15").required("this field is mandatory"),
+    dueDate: Yup.date()
+    .min(new Date(), "Due date must be in the future")
+    .required("this field is mandatory")
+    .typeError("Invalid date format"),
     image: Yup.mixed().test('fileType', 'Invalid File', validateImage).optional(),
     isPublic: Yup.boolean(),
+    priority_id: Yup.string()
+    .required("You must select a priority")
 })
 
 const createTask = async(taskData)=>{
@@ -56,7 +61,8 @@ const createTask = async(taskData)=>{
         const user_id = user ? user.id : null; 
         console.log("user id",user_id)
         if (user_id) {
-          
+          const formattedDueDate = new Date(values.dueDate).toLocaleDateString("en-CA"); // "YYYY-MM-DD"
+
           const taskData = {
             ...values,
             user_id: user_id,
@@ -116,6 +122,8 @@ const createTask = async(taskData)=>{
             name="dueDate"
             value={formik.values.dueDate}
             onChange={formik.handleChange}
+            placeholder="YYYY-MM-DD" 
+
           />
           {formik.touched.dueDate && formik.errors.dueDate && <p>{formik.errors.dueDate}</p>}
   
