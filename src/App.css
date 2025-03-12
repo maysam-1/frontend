@@ -108,6 +108,7 @@
 }
 .delete-btn:hover {
   background-color: #22234a;
+  color:white
 }
 
 .delete-btn.active {
@@ -115,6 +116,8 @@
 }
 .sidebar-item:hover {
   background-color: #22234a;
+  color:white;
+
 }
 
 .sidebar-item.active {
@@ -141,7 +144,6 @@
   align-items: center;
   padding: 16px;
   gap: 12px;
-  justify-content: space-evenly; /* Even spacing for buttons */
   z-index: 10; /* Ensure the top bar is above the content */
 
 }
@@ -256,6 +258,8 @@ body{
 
 .add-task button:hover {
   background-color: #3d3f72; 
+  color:white
+
 }
 
 .add-task p {
@@ -476,19 +480,24 @@ input[type="file"] {
 .edit-link {
   display: flex;
   align-items: center;
-  gap: 2px;
   font-weight: 550;
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
-  margin: 3px;
+  margin-top: 3px;
   background-color: white;
   height: 6px;
   width: 25px;
   text-decoration: none;
   color: black;
   text-align: center;
+  margin-left: 10px;
+  border:2px solid black;
+  font-weight: 550;
+  height: 3px;
+
+
 }
 .edit-link:hover{
   background-color: #1a1a2e;
@@ -512,6 +521,7 @@ input[type="file"] {
   text-decoration: none;
   color: black;
   text-align: center;
+  
 
 }
 .general-btns:hover{
