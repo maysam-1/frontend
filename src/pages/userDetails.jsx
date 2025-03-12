@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 async function fetchTasks(userId) {
-  const res = await axios.get(`http://localhost:8000/tasks/mytasks/${userId}`);
+  const res = await axios.get(`http://localhost:8000/tasks/usertasks/${userId}`);
   return res.data;
 }
 
