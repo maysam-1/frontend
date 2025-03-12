@@ -43,6 +43,8 @@ const SignIn = () => {
       console.log("Response from API:", data);  
 
       localStorage.setItem("user", JSON.stringify(data));
+      window.dispatchEvent(new Event("userChange")); // Notify TopBar
+
 
       navigate("/home");
     } catch (err) {
