@@ -60,7 +60,7 @@ function Sidebar() {
           <img 
             src={lightning} 
             alt="Icon" 
-            style={{ height: "1.6rem", width: "1.6rem", marginLeft: "0.5rem" }} 
+            style={{ height: "1.6rem", width: "1.6rem", marginLeft: "0.5rem",marginTop:"0.5rem" }} 
           />
         </a>
 
