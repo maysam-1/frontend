@@ -25,6 +25,7 @@ const validationSchema = Yup.object({
     dueDate: Yup.string().max(15, "max characters is 15").required("this field is mandatory"),
     image: Yup.mixed().test('fileType', 'Invalid File', validateImage).optional(),
     isPublic: Yup.boolean(),
+   
 });
 
 // Fetch task data by task ID
@@ -103,6 +104,8 @@ const EditTaskForm = () => {
                 } else {
                     mutation.mutate({ taskId, taskData }); // Pass taskId and taskData
                 }
+                window.location.reload();
+
             } else {
                 console.error("User is not authenticated.");
             }
