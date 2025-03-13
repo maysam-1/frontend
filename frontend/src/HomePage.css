@@ -1,0 +1,54 @@
+/* Full screen centered container */
+.home-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6e6fa;
+    font-family: 'Arial', sans-serif;
+    flex-direction: column;
+    margin-left: 150px;
+  }
+
+ 
+  .centered-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: black;
+    opacity: 0;
+    transform: scale(0);
+    animation: typingEffect 2s forwards, fadeIn 1s forwards;
+  }
+  
+  .centered-text2 {
+    font-size: 2rem; /* Slightly smaller font for the second text */
+    max-width: 80%; /* Set max width for the second text */
+    text-align: center;
+    padding: 0 20px; /* Add some padding for better presentation */
+  }
+  .typing {
+    animation: typingEffect 3s steps(30) 1s forwards, fadeIn 1s forwards;
+  }
+  
+  @keyframes typingEffect {
+    0% {
+      width: 0;
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      width: 100%;
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
