@@ -1,0 +1,77 @@
+# services:
+#   server:
+#     build: ./server
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - ./server
+#     env_file:
+#       - ./server/.env
+#     depends_on:
+#       db:
+#         condition: service_healthy  # Wait for database to be ready
+
+#   db:
+#     image: postgres
+#     restart: always
+#     environment:
+#       POSTGRES_USER: tester
+#       POSTGRES_PASSWORD: tester
+#       POSTGRES_DB: tester
+#       PGUSER: tester
+#       PGPORT: 5435
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#     healthcheck:
+#       test: [ "CMD-SHELL", "pg_isready" ]
+#       interval: 1s
+#       timeout: 5s
+#       retries: 10
+#     ports:
+#       - "5435:5435"
+
+# volumes:
+#   postgres_data:
+
+
+services:
+  backend:
+    build: ./server
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./server:/server
+    env_file:
+      - ./server/.env
+    depends_on:
+      db:
+        condition: service_healthy  # Ensure database is ready before starting backend
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend  # Wait for backend before starting frontend
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Maysam123
+      POSTGRES_DB: APT_DB
+      PGUSER: postgres
+      PGPORT: 5435
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "5435:5435"
+
+volumes:
+  postgres_data:
